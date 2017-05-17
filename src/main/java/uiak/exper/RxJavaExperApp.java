@@ -1,7 +1,8 @@
 package uiak.exper;
 
-import rx.Observable;
-import rx.schedulers.Schedulers;
+
+import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Hello world!

@@ -1,8 +1,8 @@
 package uiak;
 
 
+import io.reactivex.Observable;
 import org.junit.Test;
-import rx.Observable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +39,7 @@ public class reactive {
 
     @Test
     public void test1() {
-        Observable.from(wordList)
+        Observable.fromIterable(wordList)
                 .filter(s -> s.length() > 2)
                 .map(s -> s + ": " + s.length())
                 .subscribe(s -> System.out.println(s));
@@ -47,7 +47,7 @@ public class reactive {
 
 
     private Observable<String> query(String param) {
-        Observable<String> query = Observable.from(wordList);
+        Observable<String> query = Observable.fromIterable(wordList);
         return query;
     }
 
@@ -71,7 +71,6 @@ public class reactive {
         Observable.range(1, 10)
                 .flatMap(v -> Observable.just(v)
                         .delay(11 - v, TimeUnit.SECONDS))
-                .toBlocking()
                 .subscribe(System.out::println);
     }
 
@@ -83,7 +82,6 @@ public class reactive {
                 .doOnNext(System.out::println)
                 .delay(10 - s, TimeUnit.SECONDS))
         )
-                .toBlocking()
                 .subscribe(System.out::println);
     }
 
